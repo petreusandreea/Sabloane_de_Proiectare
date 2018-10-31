@@ -1,51 +1,94 @@
+
+
+import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
-public class Book {
+import java.util.Set;
 
+
+public class Book implements Element{
 	private String title;
-	public Author name;
-	//public List<Chapter> chapters;
-	public List<SubChapter> subChapters;
-	public List<Author> authors = new ArrayList<Author>();
-	public List<Chapter> chapters = new ArrayList<Chapter>();
-
+	private List<Author> authors = new ArrayList<Author>();
+	private List<Element> chapters = new ArrayList<Element>();
 
 	public Book(String title) {
-		// TODO Auto-generated constructor stub
-		this.title=title;
+		this.title = title;
+	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+//
+//	public List<Author> getAuthors() {
+//		return authors;
+//	}
+//
+//	public void setAuthors(List<Author> authors) {
+//		this.authors = authors;
+//	}
+//
+//	public List<Chapter> getChapters() {
+//		return chapters;
+//	}
+//
+//	public void setChapters(List<Chapter> chapters) {
+//		this.chapters = chapters;
+//	}
+//
+	public void addAuthor(Author author) {
+		authors.add(author);
+	}
+//
+//	public int createChapter(String title) {
+//		Chapter chapter = new Chapter(title);
+//		chapters.add(chapter);
+//		return chapters.indexOf(chapter);
+//	}
+//
+//	public Chapter getChapter(int index) {
+//		return chapters.get(index);
+//	}
+//	
+//	
+//	
+//	public void print(){
+//		System.out.println("BOOK " + title);
+//		System.out.println("AUTHORS");
+//		for (int i = 0; i<authors.size(); i++){
+//			System.out.println(authors.get(i).getName());
+//		}
+//		
+//		System.out.println("CHAPERS");
+//		for (int i = 0; i<chapters.size(); i++){
+//			System.out.println(chapters.get(i).getChapterTitle());
+//		}
+//	}
+
+	public void add(Element e) {
+		chapters.add(e);
+		
+	}
+
+	public void remove(Element e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void getChild(int index) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	public void print() {
 		System.out.println(title);
-		System.out.println("Authors: ");
-		for(Author auth:authors) {
-			System.out.println(auth);
+		for (Element elem : chapters){
+			((Book) elem).print();
 		}
-
-		for(Chapter chp:chapters) {
-			chp.print();
-		}
-	}
-
-	public void addAuthor(Author a) {
-		//this.name=name;
-		authors.add(a);
-	}
-
-	public Integer createChapter(String ch) {
-		Chapter chapter = new Chapter(ch);
-		this.chapters.add(chapter);
-		return this.chapters.indexOf(chapter);
-	}
-
-	public Integer createSubChapter(Integer index, String subCh) {
-		SubChapter subChapter = new SubChapter(subCh);
-		this.subChapters.add(subChapter);
-		return this.subChapters.indexOf(subChapter);
-	}
-	public Chapter getChapter(int index) {
-		return chapters.get(index);
+		
 	}
 
 }

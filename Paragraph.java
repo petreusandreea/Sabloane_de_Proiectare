@@ -1,13 +1,40 @@
-import java.util.ArrayList;
-import java.util.List;
 
-public class Paragraph {
+public class Paragraph implements Element{
+	private String paragraph;
+	public Paragraph(String paragraph){
+		this.paragraph = paragraph;
+	}
+	public String getParagraph() {
+		return paragraph;
+	}
+	public void setParagraph(String paragraph) {
+		this.paragraph = paragraph;
+	}
 	
-	private List<Paragraph>paragr = new ArrayList<Paragraph>();
-	String title;
-	public Paragraph(String titlePara) {
-		// TODO Auto-generated constructor stub
-		this.title = titlePara;	
+	@Override
+	public void add(Element e) {
+		
+	}
+	@Override
+	public void remove(Element e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void getChild(int index) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void print(){
+		System.out.println(paragraph);
+	}
+	public void setAlignStrategy(Align_Strategy ali) {
+		    
+		this.paragraph=ali.Aligned(getParagraph());
+		
+		
 	}
 
 }
